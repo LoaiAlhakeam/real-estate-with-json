@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Property</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        input {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <form action="/findbyId" onsubmit="this.action = this.action + '/' + this.propertyID.value" method="POST">
+        <label for="propertyID">ID : </label>
+        <input type="text" id="propertyID" th:value="${property.id}"><br>
+        <input type="submit">
+
+    </form>
+    <div align="center">
+
+        <table border="1" cellpadding="10" style="text-align: center;">
+            <tr>
+                <th>Name :</th>
+                <td th:text="${property.name}">name</td>
+            </tr>
+            <tr>
+                <th>Price :</th>
+                <td th:text="${property.price}">Price</td>
+            </tr>
+
+            <tr>
+                <th>Bedrooms :</th>
+                <td th:text="${property.bedRoomsNum}">Bedrooms Number</td>
+            </tr>
+
+            <tr>
+                <th>Bathrooms :</th>
+                <td th:text="${property.bathRoomsNum}">bathrooms Number</td>
+            </tr>
+
+            <tr>
+                <th>Home Type :</th>
+                <td th:text="${property.homeType}">Home Type</td>
+            </tr>
+            <tr>
+                <th>Parking Spots :</th>
+                <td th:text="${property.parkingSpots}">Parking Spots</td>
+            </tr>
+            <tr>
+                <th>View :</th>
+                <td th:text="${property.view}">View</td>
+            </tr>
+            <tr>
+                <th>Parking Spots :</th>
+                <td th:text="${property.ParkingSpots}">Parking Spots</td>
+            </tr>
+
+        </table>
+    </div>
+
+</body>
+
+</html>

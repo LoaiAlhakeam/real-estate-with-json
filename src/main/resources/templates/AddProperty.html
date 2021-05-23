@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Property</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        label {
+            display: inline-block;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/addProperty" onsubmit="this.action = this.action + '/' + this.name.value + '/' + this.price.value + '/' + this.bedRoomsNum.value + '/'
+    +this.bathRoomsNum.value + '/' + this.homeType.value + '/' + this.parkingSpots.value + '/' + this.view.value; "
+        method="POST">
+
+
+        <label for="name">Name : </label>
+        <input type="text" id="name"><br>
+
+        <label for="price">Price : </label>
+        <input type="number" id="price"><br>
+
+        <label for="bedRoomsNum">Bedrooms :</label>
+        <input type="number" id="bedRoomsNum" min="1" max=""><br>
+
+        <label for="bathRoomsNum">Bathrooms :</label>
+        <input type="number" id="bathRoomsNum" min="1" max=""><br>
+
+        <label for="homeType">Home type :</label>
+        <select id="homeType">
+            <option value="house" name="homeType">House</option>
+            <option value="townHouse" name="homeType">Town House</option>
+            <option value="multiFamily" name="homeType">Multi-Family</option>
+            <option value="appatement" name="homeType">Appatement</option>
+        </select><br>
+
+        <label for="parkingSpots">Parking Spots :</label>
+        <input type="number" id="parkingSpots" min="1" max=""><br>
+
+        <label for="view">View :</label>
+        <input type="radio" id="city" name="view" value="city">
+        <label for="city">City</label>
+        <input type="radio" id="park" name="view" value="park">
+        <label for="park">Park</label>
+        <input type="radio" id="mountain" name="view" value="mountain">
+        <label for="mountain">Mountain</label>
+        <input type="radio" id="water" name="view" value="water">
+        <label for="water">Water</label><br>
+
+        <input type="submit" value="Add Property">
+
+
+    </form>
+</body>
+
+</html>

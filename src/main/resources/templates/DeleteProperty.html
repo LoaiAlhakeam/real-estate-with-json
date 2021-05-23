@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Property</title>
+    <script src="app.js" charset="utf-8"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        input {
+            margin: 5px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/delete" onsubmit="this.action = this.action + '/' + propertyID.value;" method="POST">
+        <label for="id">Property ID</label><br>
+        <input type="text" id="propertyID"><br>
+        <input type="submit" value="Delete">
+    </form>
+</body>
+
+</html>

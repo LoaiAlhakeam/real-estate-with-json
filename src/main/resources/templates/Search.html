@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Property</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        label {
+            display: inline-block;
+            padding: 5px;
+        }
+
+        .Actions {
+            display: inline-block;
+        }
+
+        input {
+            margin: 10px;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+    <script>
+        $(function () {
+            $('#selector').change(function () {
+                $('.all').hide();
+                $('#' + $(this).val()).show();
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <h2>Search By</h2>
+    <select name="" id="selector">
+        <option value="searchById">id</option>
+        <option value="searchByName">name</option>
+        <option value="searchByPrice">price</option>
+        <option value="searchByBathRoomsNum">Bathrooms</option>
+        <option value="searchByBedRoomsNum">Bedrooms</option>
+        <option value="searchByHomeType">Home Type</option>
+        <option value="searchByParkingSpots">Parking Spots</option>
+        <option value="searchByView">View</option>
+    </select><br>
+
+    <Form action="/searchByID" onsubmit="this.action = this.action + '/' + this.id.value" method="POST" class="all"
+        id="searchById">
+        <label for="id">ID : </label>
+        <input type="text" id="id"><br>
+        <input type="submit">
+    </Form>
+
+    <Form action="/searchByName" onsubmit="this.action = this.action + '/' + this.name.value" method="POST" class="all"
+        id="searchByName" hidden>
+        <label for="name">Name : </label>
+        <input type="text" id="name"><br>
+        <input type="submit">
+    </Form>
+
+    <Form action="/searchByPrice" onsubmit="this.action = this.action + '/' + this.price.value" method="POST"
+        class="all" id="searchByPrice" hidden>
+        <label for="price">Price : </label>
+        <input type="text" id="price"><br>
+        <input type="submit">
+    </Form>
+
+    <Form action="/searchByBathRoomsNum" onsubmit="this.action = this.action + '/' + this.bathRoomsNum.value"
+        method="POST" class="all" id="searchByBathRoomsNum" hidden>
+        <label for="bathRoomsNum">Bathrooms Number : </label>
+        <input type="text" id="bathRoomsNum"><br>
+        <input type="submit">
+    </Form>
+
+    <Form action="/searchByBedRoomsNum" onsubmit="this.action = this.action + '/' + this.BedRoomsNum.value"
+        method="POST" class="all" id="searchByBedRoomsNum" hidden>
+        <label for="BedRoomsNum">Bedrooms Number : </label>
+        <input type="text" id="BedRoomsNum"><br>
+        <input type="submit">
+    </Form>
+
+    <Form action="/searchByHomeType" onsubmit="this.action = this.action + '/' + this.homeType.value " method="POST"
+        class="all" id="searchByHomeType" hidden>
+        <label for="HomeType">Home Type : </label>
+        <select id="homeType">
+            <option value="house" name="homeType">House</option>
+            <option value="townHouse" name="homeType">Town House</option>
+            <option value="multiFamily" name="homeType">Multi-Family</option>
+            <option value="appatement" name="homeType">Appatement</option>
+        </select><br>
+        <input type="submit">
+
+    </Form>
+
+    <Form action="/searchByParkingSpots" onsubmit="this.action = this.action + '/' + this.ParkingSpots.value"
+        method="POST" class="all" id="searchByParkingSpots" hidden>
+        <label for="ParkingSpots">Parking Spots : </label>
+        <input type="text" id="ParkingSpots"><br>
+        <input type="submit">
+    </Form>
+
+    <Form action="/searchByView" onsubmit="this.action = this.action + '/' + this.view.value" method="POST" class="all"
+        id="searchByView" hidden>
+        <label for="view">View :</label>
+        <input type="radio" id="city" name="view" value="city">
+        <label for="city">City</label>
+        <input type="radio" id="park" name="view" value="park">
+        <label for="park">Park</label>
+        <input type="radio" id="mountain" name="view" value="mountain">
+        <label for="mountain">Mountain</label>
+        <input type="radio" id="water" name="view" value="water">
+        <label for="water">Water</label><br>
+        <input type="submit">
+    </Form>
+
+    <div align="center">
+        <h1>Properties By Search</h1>
+        <br />
+
+        <table border="1" cellpadding="10" style="text-align: center;">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>Bedrooms Number</td>
+                    <td>bathrooms Number</td>
+                    <td>Home Type</td>
+                    <td>Parking Spots</td>
+                    <td>view</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="property : ${Properties}">
+                    <td th:text="${property.id}">id</td>
+                    <td th:text="${property.name}">name</td>
+                    <td th:text="${property.price}">Price</td>
+                    <td th:text="${property.bedRoomsNum}">Bedrooms Number</td>
+                    <td th:text="${property.bathRoomsNum}">bathrooms Number</td>
+                    <td th:text="${property.homeType}">Home Type</td>
+                    <td th:text="${property.parkingSpots}">Parking Spots</td>
+                    <td th:text="${property.view}">View</td>
+
+                    <td>
+                        <form class="Actions" th:action="@{'/findbyId/'+${property.id}}" method="POST">
+                            <input type="submit" value="View">
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+</body>
+
+</html>
